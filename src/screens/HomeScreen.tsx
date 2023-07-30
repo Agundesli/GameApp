@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, SafeAreaView, ScrollView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel-v4';
 import Feather from 'react-native-vector-icons/MaterialIcons';
-import { sliderData } from '../model/data';
+import { freeGames, paidGames, sliderData } from '../model/data';
 import BannerSlider from '../components/BannerSlider';
 import { windowWidth } from '../utils/Dimensions';
+import CustomSwitch from '../components/CustomSwitch';
+import ListItem from '../components/ListItem';
 
-export default function HomeScreen() {
-    const renderBanner = ({ item, index }: any) => {
+export default function HomeScreen({navigation}:any) {
+
+    const [gamestab, setGamesTab] = useState(1);
+
+    const renderBanner = ({ item }: any) => {
         return <BannerSlider data={item} />
+    }
+
+    const onSelectSwitch = (value: number) => {
+        setGamesTab(value);
     }
 
     return (
@@ -25,10 +34,13 @@ export default function HomeScreen() {
                         fontFamily: 'Roboto-Medium',
                         marginTop: 4
                     }}>Hello Heisenberg</Text>
-                    <ImageBackground source={require('../assets/images/user-profile.jpg')}
-                        style={{ width: 35, height: 35 }}
-                        imageStyle={{ borderRadius: 25 }}
-                    />
+                    <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                        <ImageBackground source={require('../assets/images/user-profile.jpg')}
+                            style={{ width: 35, height: 35 }}
+                            imageStyle={{ borderRadius: 25 }}
+                        />
+                    </TouchableOpacity>
+
                 </View>
 
                 <View style={{
@@ -48,7 +60,7 @@ export default function HomeScreen() {
                         }}
                     />
                     <TextInput placeholder='Search' />
-                    
+
                 </View>
 
                 <View style={{
@@ -76,6 +88,37 @@ export default function HomeScreen() {
                     itemWidth={300}
                     loop={true}
                 />
+
+                <View style={{ marginVertical: 10 }}>
+                    <CustomSwitch
+                        selectionMode={1}
+                        optionOne="Free to play"
+                        optionTwo="Paid games"
+                        onSelectSwitch={onSelectSwitch} />
+                </View>
+
+                {gamestab == 1 &&
+                    freeGames.map(item => (
+                        <ListItem
+                            key={item.id}
+                            photo={item.poster}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            isFree={item.isFree}
+                        />
+                    ))}
+
+                {gamestab == 2 &&
+                    paidGames.map(item => (
+                        <ListItem
+                            key={item.id}
+                            photo={item.poster}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            isFree={item.isFree}
+                            price={item.price}
+                        />
+                    ))}
 
             </ScrollView>
         </SafeAreaView>
