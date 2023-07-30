@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import HomeScreen from '../screens/HomeScreen';
+
+
 import ProfileScren from '../screens/ProfileScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import MomentsScreen from '../screens/MomentsScreen';
@@ -8,6 +9,7 @@ import SettingScreen from '../screens/SettingScreen';
 import CustomDrawer from '../components/CustomDrawer';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import TabNavigator from './TabNavigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -25,7 +27,8 @@ const AuthStack = () => {
                     fontSize: 15
                 }
             }}>
-            <Drawer.Screen name='HomeScreen' component={HomeScreen} options={{
+                
+            <Drawer.Screen name='HomeScreen' component={TabNavigator} options={{
                 drawerIcon: ({ color }) => (
                     <Ionicons name='home-outline' size={22} color={color} />
                 )

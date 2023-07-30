@@ -8,7 +8,7 @@ import { windowWidth } from '../utils/Dimensions';
 import CustomSwitch from '../components/CustomSwitch';
 import ListItem from '../components/ListItem';
 
-export default function HomeScreen({navigation}:any) {
+export default function HomeScreen({ navigation }: any) {
 
     const [gamestab, setGamesTab] = useState(1);
 
@@ -105,6 +105,12 @@ export default function HomeScreen({navigation}:any) {
                             title={item.title}
                             subtitle={item.subtitle}
                             isFree={item.isFree}
+                            onPress={() => navigation.navigate('GameDetails', {
+                                title: item.title,
+                                id: item.id,
+                                image: item.poster,
+                                subtitle: item.subtitle,
+                            })}
                         />
                     ))}
 
@@ -117,6 +123,12 @@ export default function HomeScreen({navigation}:any) {
                             subtitle={item.subtitle}
                             isFree={item.isFree}
                             price={item.price}
+                            onPress={() => navigation.navigate('GameDetails', {
+                                title: item.title,
+                                id: item.id,
+                                image: item.poster,
+                                subtitle: item.subtitle,
+                            })}
                         />
                     ))}
 
