@@ -50,7 +50,7 @@ const TabNavigator = () => {
             tabBarActiveTintColor: 'yellow',
         }}>
 
-            <Tab.Screen name='Home' component={HomeStack} options={({route}) =>({
+            <Tab.Screen name='Home' component={HomeStack} options={({route}:any) =>({
                 tabBarStyle:{display: getTabBarVisibility(route), backgroundColor:'#AD40AF'},
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='home-outline' color={color} size={size} />
@@ -76,7 +76,7 @@ const TabNavigator = () => {
 
 };
 
-const getTabBarVisibility = (route) =>{
+const getTabBarVisibility = (route:any) =>{
     const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
     if(routeName=='GameDetails') {
         return 'none';
