@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image } from 'react-native';
 import MaterialalIcons from 'react-native-vector-icons/MaterialIcons';
 import { default as logo } from '../assets/images/misc/game.png';
+import { AuthContext } from '../context/AuthContext';
 
 
 const OnBoardingScreen = ({ navigation }: any) => {
@@ -53,6 +54,7 @@ const OnBoardingScreen = ({ navigation }: any) => {
                 }}>
                     Let's Begin
                 </Text>
+
                 <MaterialalIcons name='arrow-forward-ios' size={22} color="#fff" />
             </TouchableOpacity>
         </SafeAreaView>

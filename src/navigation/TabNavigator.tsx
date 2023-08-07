@@ -50,7 +50,7 @@ const TabNavigator = () => {
             tabBarActiveTintColor: 'yellow',
         }}>
 
-            <Tab.Screen name='Home' component={HomeStack} options={({route}:any) =>({
+            <Tab.Screen name='HomeScreen' component={HomeStack} options={({route}:any) =>({
                 tabBarStyle:{display: getTabBarVisibility(route), backgroundColor:'#AD40AF'},
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name='home-outline' color={color} size={size} />

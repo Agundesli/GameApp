@@ -1,15 +1,14 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import AppStack from '../src/navigation/appStack'
-import AuthStack from '../src/navigation/authSatck'
+
+import { AuthProvider } from './context/AuthContext';
+import AppNav from './navigation/AppNav';
 
 
 const App = () => {
     return (
-        <NavigationContainer>
-            {/* <AppStack /> */}
-            <AuthStack/>
-        </NavigationContainer>
+        <AuthProvider>
+            <AppNav/>
+        </AuthProvider>
     );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, SafeAreaView, ScrollView, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel-v4';
 import Feather from 'react-native-vector-icons/MaterialIcons';
@@ -7,10 +7,12 @@ import BannerSlider from '../components/BannerSlider';
 import { windowWidth } from '../utils/Dimensions';
 import CustomSwitch from '../components/CustomSwitch';
 import ListItem from '../components/ListItem';
+import { AuthContext } from '../context/AuthContext';
 
 export default function HomeScreen({ navigation }: any) {
 
     const [gamestab, setGamesTab] = useState(1);
+    const {userInfo} = useContext(AuthContext);
 
     const renderBanner = ({ item }: any) => {
         return <BannerSlider data={item} />
@@ -33,7 +35,7 @@ export default function HomeScreen({ navigation }: any) {
                         fontSize: 16,
                         fontFamily: 'Roboto-Medium',
                         marginTop: 4
-                    }}>Hello Heisenberg</Text>
+                    }}>Hello {userInfo.username}</Text>
                     <TouchableOpacity onPress={() => navigation.openDrawer()}>
                         <ImageBackground source={require('../assets/images/user-profile.jpg')}
                             style={{ width: 35, height: 35 }}

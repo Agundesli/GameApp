@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Text, View, Image, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import { default as logo } from '../assets/images/misc/login.png';
 import { default as google } from '../assets/images/misc/google.png';
@@ -7,8 +7,13 @@ import { default as twitter } from '../assets/images/misc/twitter.png';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomButton from '../components/CustomButton';
 import InputField from '../components/InputField';
+import { AuthContext } from '../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    const { login } = useContext(AuthContext);
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ paddingHorizontal: 25 }}>
@@ -27,7 +32,6 @@ const LoginScreen = ({ navigation }) => {
                 }}>
                     Login
                 </Text>
-
                 <InputField
                     label={'Email ID'}
                     icon={
@@ -38,7 +42,8 @@ const LoginScreen = ({ navigation }) => {
                             style={{ marginRight: 5, marginTop: 3 }} />
                     }
                     keyboardType="email-address"
-
+                    value={email}
+                    onChangeText={text => setEmail(text)}
                 />
 
                 <InputField
@@ -54,9 +59,16 @@ const LoginScreen = ({ navigation }) => {
                     keyboardType="password"
                     fieldButtonLabel={"Forgot?"}
                     fieldButtonFunction={() => { }}
+                    value={password}
+                    onChangeText={text => setPassword(text)}
                 />
 
-                <CustomButton label={"Login"} onPress={() => { }} />
+                <CustomButton
+                    label={"Login"}
+                    onPress={() => {
+                        login(email, password);
+                    }}
+                />
 
 
                 <Text style={{

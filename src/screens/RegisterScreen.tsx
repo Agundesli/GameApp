@@ -15,11 +15,13 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
+import { AuthContext } from '../context/AuthContext';
 
 const RegisterScreen = ({ navigation }) => {
     const [date, setDate] = useState(new Date());
     const [open, setOpen] = useState(false);
     const [dobLabel, setDobLabel] = useState('Date of Birth');
+
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
             <ScrollView

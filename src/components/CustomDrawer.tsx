@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { AuthContext } from '../context/AuthContext';
 const CustomDrawer = (props: any) => {
+
+    const {logout} = useContext(AuthContext)
     return (
         <View style={{ flex: 1 }}>
 
@@ -42,14 +44,14 @@ const CustomDrawer = (props: any) => {
 
             <View style={{ padding: 10, borderTopWidth: 2, borderTopColor: '#ccc' }}>
 
-                <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
+                <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
                     <View style={{ flexDirection: 'row' }}>
                         <Ionicons name="share-social-outline" size={22} color={'#333'} />
                         <Text style={{fontSize:15, marginLeft:5, color:'#333'}}>Tell a Friend</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
+                <TouchableOpacity onPress={() => {logout()}} style={{ paddingVertical: 15 }}>
                     <View style={{ flexDirection: 'row' }}>
                         <Ionicons name="exit-outline" size={22} color={'#333'} />
                         <Text style={{fontSize:15, marginLeft:5, color:'#333'}}>SignOut</Text>
