@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
-
+import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from 'axios'
-
 import { BASE_URL } from '../config';
 
 export const AuthContext = createContext();
@@ -27,11 +26,10 @@ export const AuthProvider = ({ children }) => {
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 AsyncStorage.setItem('userToken', userInfo.token);
 
-                console.log(userInfo);
-                console.log("User token" +" "+ userInfo.token);
             })
             .catch(e => {
-                console.log(`Login error ${e}`)
+                Alert.alert("Kullanıcı Adı veya Şifre Geçersiz")
+
             });
         setIsLoading(false);
     }
@@ -47,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     const isLoggedIn = async () => {
         try {
             setIsLoading(true);
+
             let userInfo = await AsyncStorage.getItem('userInfo');
             let userToken = await AsyncStorage.getItem('userToken');
             userInfo=JSON.parse(userInfo);
@@ -64,7 +63,6 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         isLoggedIn();
-        console.log("effect" + " " + userToken)
     }, [])
 
     return (

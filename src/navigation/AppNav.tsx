@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AuthContext } from '../context/AuthContext';
 import AppStack from './appStack'
 import AuthStack from './authSatck'
-import { AuthContext } from '../context/AuthContext';
-
 
 function AppNav() {
 
@@ -20,10 +17,10 @@ function AppNav() {
         )
     }
 
-    console.log("appnaw"+" "+userToken)
 
     return (
         <NavigationContainer>
+
             {userToken !== null ? <AppStack /> : <AuthStack />}
 
         </NavigationContainer>

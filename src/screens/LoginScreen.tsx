@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Text, View, Image, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { default as logo } from '../assets/images/misc/login.png';
 import { default as google } from '../assets/images/misc/google.png';
 import { default as facebook } from '../assets/images/misc/facebook.png';
@@ -12,8 +12,8 @@ import { AuthContext } from '../context/AuthContext';
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-
     const { login } = useContext(AuthContext);
+    
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ paddingHorizontal: 25 }}>
@@ -32,6 +32,7 @@ const LoginScreen = ({ navigation }) => {
                 }}>
                     Login
                 </Text>
+
                 <InputField
                     label={'Email ID'}
                     icon={
@@ -69,7 +70,6 @@ const LoginScreen = ({ navigation }) => {
                         login(email, password);
                     }}
                 />
-
 
                 <Text style={{
                     textAlign: 'center',

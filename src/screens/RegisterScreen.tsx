@@ -15,7 +15,6 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
-import { AuthContext } from '../context/AuthContext';
 
 const RegisterScreen = ({ navigation }) => {
     const [date, setDate] = useState(new Date());
@@ -116,6 +115,8 @@ const RegisterScreen = ({ navigation }) => {
                         />
                     }
                     keyboardType="fullname"
+                    value={""}
+                    onChangeText={""}
                 />
 
                 <InputField
@@ -129,6 +130,8 @@ const RegisterScreen = ({ navigation }) => {
                         />
                     }
                     keyboardType="email-address"
+                    value={""}
+                    onChangeText={""}
                 />
 
                 <InputField
@@ -143,6 +146,8 @@ const RegisterScreen = ({ navigation }) => {
                     }
                     inputType="password"
                     keyboardType="password"
+                    value={""}
+                    onChangeText={""}
                 />
 
                 <InputField
@@ -157,9 +162,9 @@ const RegisterScreen = ({ navigation }) => {
                     }
                     inputType="password"
                     keyboardType="password"
+                    value={""}
+                    onChangeText={""}
                 />
-
-
 
                 <View style={{
                     flexDirection: 'row',
@@ -186,7 +191,6 @@ const RegisterScreen = ({ navigation }) => {
                     
                 </View>
 
-
                 <DatePicker
                     modal
                     open={open}
@@ -203,8 +207,6 @@ const RegisterScreen = ({ navigation }) => {
                         setOpen(false);
                     }}
                 />
-
-
                 <CustomButton label={'Register'} onPress={() => { }} />
 
 
@@ -219,8 +221,6 @@ const RegisterScreen = ({ navigation }) => {
                         <Text style={{ color: '#AD40AF', fontWeight: '700' }}> Login</Text>
                     </TouchableOpacity>
                 </View>
-
-
 
             </ScrollView>
 
